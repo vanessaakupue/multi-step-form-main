@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <title>Frontend Mentor | Multi-step form</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <!-- <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style> -->
+</head>
+<body>
+
+  <!-- Sidebar start -->
+
+  <main>
+    <header class="side-bar" id="sideBar">
+      <div class="side-bar-img">
+        <img src="/assets/images/bg-sidebar-desktop.svg" class="desktop-image">
+        <img src="/assets/images/bg-sidebar-mobile.svg" alt="" class="mobile-image">
+      </div>
+      <div class="sidebar-cont">
+        <div class="one nav-menu" id="one">
+          <span class="no1 number number-active">1</span>
+          <div class="inner-cont inner-one">
+            <h6 class="steps step-one">STEP 1</h6>
+            <h6 class="nav-texts text-one">YOUR INFO</h6>
+          </div>
+        </div>
+
+        <div class="two nav-menu" id="two">
+          <span class="no2 number">2</span>
+          <div class="inner-cont inner-two">
+            <h6 class="steps step-two">STEP 2</h6>
+            <h6 class="nav-texts text-two">SELECT PLAN</h6>
+          </div>
+        </div>
+
+        <div class="three nav-menu" id="three">
+          <span class="no3 number">3</span>
+          <div class="inner-cont inner-three">
+            <h6 class="steps step-three">STEP 3</h6>
+            <h6 class="nav-texts text-three">ADD-ONS</h6>
+          </div>
+        </div>
+
+        <div class="four nav-menu" id="four">
+          <span class="no4 number">4</span>
+          <div class="inner-cont inner-four">
+            <h6 class="steps step-four">STEP 4</h6>
+            <h6 class="nav-texts text-four">SUMMARY</h6>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="body-cont-one">
+      <div class="body-cont-one-text">
+        <div class="body-inner-cont-one | tab">
+          <h1 class="body-header-text">Personal info</h1>
+          <h6 class="body-second-text">Please provide your name, email address, and phone number.</h6>
+          <div class="step-one-form" id="form" method="post">
+            <div action="./" class="step-one-inner | step-one-name" method="post">
+              <div class="error-cont">
+                <label for="name-one">Name</label><br>
+                <div class="error">
+                  <p class="error-message">This field is required</p>
+                </div>
+              </div>
+              <input type="text" name="name-one" id="name-one" placeholder="e.g. Stephen King" >
+            </div>
+  
+            <div action="./" class="step-one-inner | step-one-email" method="post">
+              <div class="error-cont">
+                <label for="email-one">Email Address</label><br>
+                <div class="error">
+                  <p class="error-message">This field is required</p>
+                </div>
+              </div>
+              <input type="text" name="email-one" id="email-one" placeholder="e.g. stephenking@lorem.com">
+            </div>
+  
+            <div action="./" class="step-one-inner | step-one-num" method="post">
+              <div class="error-cont">
+                <label for="num-one">Phone Number</label><br>
+                <div class="error">
+                  <p class="error-message">This field is required</p>
+                </div>
+              </div>
+              <input type="tel" name="num-one" id="num-one" placeholder="e.g. +1 234 567 890">
+            </div>
+
+
+          </div>
+        </div>
+  
+        <div class="body-inner-cont-two | tab">
+          <h1 class="body-header-text">Select your plan</h1>
+          <h6 class="body-second-text">You have the option of monthly or yearly billing.</h6>
+          <div class="select-plan-pay">
+            <div class="arcade-cont | plan-pay | plan-pay-active">
+              <img src="/assets/images/icon-arcade.svg" class="arcade-img" alt="">
+              <div class="arcade-text | text-pay">
+                <h6 class="name-two">Arcade</h6>
+                <h6 class="Mprice">$9/mo</h6>
+                <h6 class="Yprice">$90/yr</h6>
+                <h6 class="year-text">2 months free</h6>
+              </div>
+            </div>
+  
+            <div class="advanced-cont | plan-pay">
+              <img src="/assets/images/icon-advanced.svg" class="advanced-img" alt="">
+              <div class="advanced-text | text-pay">
+                <h6 class="name-two">Advanced</h6>
+                <h6 class="Mprice">$12/mo</h6>
+                <h6 class="Yprice">$120/yr</h6>
+                <h6 class="year-text">2 months free</h6>
+              </div>
+            </div>
+  
+            <div class="pro-cont | plan-pay">
+              <img src="/assets/images/icon-pro.svg" class="pro-img" alt="">
+              <div class="pro-text | text-pay">
+                <h6 class="name-two">Pro</h6>
+                <h6 class="Mprice">$15/mo</h6>
+                <h6 class="Yprice">$150/yr</h6>
+                <h6 class="year-text">2 months free</h6>
+              </div>
+            </div>
+          </div>
+  
+          <div class="checkbox">
+            <h5 class="monthly checkbox-active">Monthly</h5>
+            <label class="switch">
+              <input type="checkbox" id="checkbox-one" name="checkbox">
+              <span class="slider round"></span>
+            </label>
+            <h5 class="yearly">Yearly</h5>
+          </div>
+        </div>
+  
+        <div class="body-inner-cont-three | tab">
+          <h1 class="body-header-text">Pick add-ons</h1>
+          <h6 class="body-second-text">Add-ons help enhance your gaming experience.</h6>
+          <div class="add-on-checkbox">
+            <div class="addon-one | addon-active">
+              <div class="addon-ist-cont">
+                <label class="container">
+                  <input type="checkbox" id="checkbox-two" name="checkbox">
+                  <span class="checkmark"></span>
+                </label>
+                <div class="addon-one-text">
+                  <p class="add-text">Online service</p>
+                  <p class="add-sent">Access to multiplayer games</p>
+                </div>
+              </div>
+              <div class="addon-one-price">
+                <p>+$1/mo</p>
+                <span></span>
+              </div>
+            </div>
+            <div class="addon-one">
+              <div class="addon-ist-cont">
+                <label class="container">
+                  <input type="checkbox" id="checkbox-three" name="checkbox">
+                  <span class="checkmark"></span>
+                </label>
+                <div class="addon-one-text">
+                  <p class="add-text">Larger storage</p>
+                  <p class="add-sent">Extra 1TB of cloud save</p>
+                </div>
+              </div>
+              <div class="addon-one-price">
+                <p>+$2/mo</p>
+                <span></span>
+              </div>
+            </div>
+            <div class="addon-one">
+              <div class="addon-ist-cont">
+                <label class="container">
+                  <input type="checkbox" id="checkbox-four" name="checkbox">
+                  <span class="checkmark"></span>
+                </label>
+                <div class="addon-one-text">
+                  <p class="add-text">Customizable profile</p>
+                  <p class="add-sent">Custom theme on your profile</p>
+                </div>
+              </div>
+              <div class="addon-one-price">
+                <p>+$2/mo</p>
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="body-inner-cont-four | tab">
+          <h1 class="body-header-text">Finishing up</h1>
+          <h6 class="body-second-text">Double-check everything looks OK before confirming.</h6>
+          <div class="plan-pay-selected">
+  
+          </div>
+
+          <div class="add-ons-selected">
+  
+          </div>
+
+          <div class="final-total">
+  
+          </div>
+
+        </div>
+  
+        <div class="thank-you-cont">
+          <img src="/assets/images/icon-thank-you.svg" alt="" class="thankYou">
+          <h1 class="body-header-text thankYou-header">Thank you!</h1>
+          <h6 class="body-second-text thankYou-text">Thanks for confirming your subscription! We hope you have fun
+            using our platform. If you ever need support, please feel free 
+            to email us at support@loremgaming.com.</h6>
+        </div>
+        
+      </div>
+
+
+      <div class="btn-div">
+        <button class="prev-one">Go Back</button>
+        <button type="submit" class="next-one">Next Step</button>
+      </div>
+      
+    </div>
+
+    
+
+  </main>
+  
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+
+  <script src="/script.js"></script>
+</body>
+</html>

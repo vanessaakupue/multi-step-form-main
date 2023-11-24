@@ -71,17 +71,17 @@
               <div class="error-cont">
                 <label for="name-one">Name</label><br>
                 <div class="error">
-                  <p class="error-message">This field is required</p>
+                  <p class="name-error-message">This field is required</p>
                 </div>
               </div>
               <input type="text" name="name-one" id="name-one" placeholder="e.g. Stephen King" >
             </div>
-  
+
             <div action="./" class="step-one-inner | step-one-email" method="post">
               <div class="error-cont">
                 <label for="email-one">Email Address</label><br>
                 <div class="error">
-                  <p class="error-message">This field is required</p>
+                  <p class="email-error-message">This field is required</p>
                 </div>
               </div>
               <input type="text" name="email-one" id="email-one" placeholder="e.g. stephenking@lorem.com">
@@ -91,7 +91,7 @@
               <div class="error-cont">
                 <label for="num-one">Phone Number</label><br>
                 <div class="error">
-                  <p class="error-message">This field is required</p>
+                  <p class="num-error-message">This field is required</p>
                 </div>
               </div>
               <input type="tel" name="num-one" id="num-one" placeholder="e.g. +1 234 567 890">
@@ -100,60 +100,60 @@
 
           </div>
         </div>
-  
+
         <div class="body-inner-cont-two | tab">
           <h1 class="body-header-text">Select your plan</h1>
           <h6 class="body-second-text">You have the option of monthly or yearly billing.</h6>
           <div class="select-plan-pay">
-            <div class="arcade-cont | plan-pay | plan-pay-active">
+            <div class="arcade-cont | plan-pay " onclick="addPlan()">
               <img src="/assets/images/icon-arcade.svg" class="arcade-img" alt="">
               <div class="arcade-text | text-pay">
-                <h6 class="name-two">Arcade</h6>
-                <h6 class="Mprice">$9/mo</h6>
-                <h6 class="Yprice">$90/yr</h6>
+                <h6 class="name-two arcade-name">Arcade</h6>
+                <h6 class="Mprice m-arcade">$9/mo</h6>
+                <h6 class="Yprice y-arcade">$90/yr</h6>
                 <h6 class="year-text">2 months free</h6>
               </div>
             </div>
-  
-            <div class="advanced-cont | plan-pay">
+
+            <div class="advanced-cont | plan-pay" >
               <img src="/assets/images/icon-advanced.svg" class="advanced-img" alt="">
               <div class="advanced-text | text-pay">
-                <h6 class="name-two">Advanced</h6>
-                <h6 class="Mprice">$12/mo</h6>
-                <h6 class="Yprice">$120/yr</h6>
+                <h6 class="name-two advanced-name">Advanced</h6>
+                <h6 class="Mprice m-advanced">$12/mo</h6>
+                <h6 class="Yprice y-advanced">$120/yr</h6>
                 <h6 class="year-text">2 months free</h6>
               </div>
             </div>
-  
-            <div class="pro-cont | plan-pay">
+
+            <div class="pro-cont | plan-pay" >
               <img src="/assets/images/icon-pro.svg" class="pro-img" alt="">
               <div class="pro-text | text-pay">
-                <h6 class="name-two">Pro</h6>
-                <h6 class="Mprice">$15/mo</h6>
-                <h6 class="Yprice">$150/yr</h6>
+                <h6 class="name-two pro-name">Pro</h6>
+                <h6 class="Mprice m-pro">$15/mo</h6>
+                <h6 class="Yprice y-pro">$150/yr</h6>
                 <h6 class="year-text">2 months free</h6>
               </div>
             </div>
           </div>
-  
+
           <div class="checkbox">
-            <h5 class="monthly checkbox-active">Monthly</h5>
+            <h5 class="monthly | checker | checkbox-active">Monthly</h5>
             <label class="switch">
               <input type="checkbox" id="checkbox-one" name="checkbox">
               <span class="slider round"></span>
             </label>
-            <h5 class="yearly">Yearly</h5>
+            <h5 class="yearly checker">Yearly</h5>
           </div>
         </div>
-  
+
         <div class="body-inner-cont-three | tab">
           <h1 class="body-header-text">Pick add-ons</h1>
           <h6 class="body-second-text">Add-ons help enhance your gaming experience.</h6>
           <div class="add-on-checkbox">
-            <div class="addon-one | addon-active">
+            <div class="addon-one">
               <div class="addon-ist-cont">
                 <label class="container">
-                  <input type="checkbox" id="checkbox-two" name="checkbox">
+                  <input type="checkbox" id="checkboxx" name="checkboxx">
                   <span class="checkmark"></span>
                 </label>
                 <div class="addon-one-text">
@@ -162,14 +162,15 @@
                 </div>
               </div>
               <div class="addon-one-price">
-                <p>+$1/mo</p>
-                <span></span>
+                <p class="three-month">+$1/mo</p>
+                <span class="three-year">+$10/yr</span>
               </div>
             </div>
+
             <div class="addon-one">
               <div class="addon-ist-cont">
                 <label class="container">
-                  <input type="checkbox" id="checkbox-three" name="checkbox">
+                  <input type="checkbox" id="checkboxx" name="checkboxx">
                   <span class="checkmark"></span>
                 </label>
                 <div class="addon-one-text">
@@ -178,14 +179,15 @@
                 </div>
               </div>
               <div class="addon-one-price">
-                <p>+$2/mo</p>
-                <span></span>
+                <p class="three-month">+$2/mo</p>
+                <span class="three-year">+$20/yr</span>
               </div>
             </div>
+
             <div class="addon-one">
               <div class="addon-ist-cont">
                 <label class="container">
-                  <input type="checkbox" id="checkbox-four" name="checkbox">
+                  <input type="checkbox" id="checkboxx" name="checkboxx">
                   <span class="checkmark"></span>
                 </label>
                 <div class="addon-one-text">
@@ -194,38 +196,62 @@
                 </div>
               </div>
               <div class="addon-one-price">
-                <p>+$2/mo</p>
-                <span></span>
+                <p class="three-month">+$2/mo</p>
+                <span class="three-year">+$20/yr</span>
               </div>
             </div>
           </div>
         </div>
-  
+
         <div class="body-inner-cont-four | tab">
           <h1 class="body-header-text">Finishing up</h1>
           <h6 class="body-second-text">Double-check everything looks OK before confirming.</h6>
-          <div class="plan-pay-selected">
-  
-          </div>
+          <div class="four-body">
+            <div class="plan-pay-selected">
+              <div class="plan-pay-name-cont">
+                <p class="plan-pay-name"></p>
+                <span class="change-btn">Change</span>
+              </div>
 
-          <div class="add-ons-selected">
-  
+              <p class="plan-pay-amt"></p>
+
+            </div>
+
+            <div class="four-line"></div>
+
+            <div class="add-ons-selected">
+              <div class="addon-sel | addon-sel-one">
+                <p class="addon-name | addon-name-one"></p>
+                <span class="addon-amt | addon-amt-one"></span>
+              </div>
+              <div class="addon-sel | addon-sel-two">
+                <p class="addon-name | addon-name-two"></p>
+                <span class="addon-amt | addon-amt-two"></span>
+              </div>
+              <div class="addon-sel | addon-sel-three">
+                <p class="addon-name | addon-name-three"></p>
+                <span class="addon-amt | addon-amt-three"></span>
+              </div>
+
+            </div>
+
           </div>
 
           <div class="final-total">
-  
-          </div>
+            <p class="final-total-text"></p>
+            <span class="total-amt"></span>
 
+          </div>
         </div>
-  
+
         <div class="thank-you-cont">
           <img src="/assets/images/icon-thank-you.svg" alt="" class="thankYou">
           <h1 class="body-header-text thankYou-header">Thank you!</h1>
           <h6 class="body-second-text thankYou-text">Thanks for confirming your subscription! We hope you have fun
-            using our platform. If you ever need support, please feel free 
+            using our platform. If you ever need support, please feel free
             to email us at support@loremgaming.com.</h6>
         </div>
-        
+
       </div>
 
 
@@ -248,3 +274,5 @@
   <script src="/script.js"></script>
 </body>
 </html>
+
+

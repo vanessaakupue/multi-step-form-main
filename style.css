@@ -196,13 +196,34 @@ main {
 
 .error-outline {
     outline: 1px solid var(--strawberry-color);
+    /* border: none; */
 }
 
-.error-message {
+.name-error-message  {
     display: none;
     color: var(--strawberry-color);
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 500;
+    text-align: right;
+    margin-top: -15px;
+    margin-right: 0px;
+}
+
+.email-error-message {
+    display: none;
+    color: var(--strawberry-color);
+    font-size: 11px;
+    font-weight: 500;
+    text-align: right;
+    margin-top: -15px;
+    margin-right: 0px;
+}
+
+.num-error-message {
+    display: none;
+    color: var(--strawberry-color);
+    font-size: 11px;
+    font-weight: 500;
     text-align: right;
     margin-top: -15px;
     margin-right: 0px;
@@ -441,10 +462,97 @@ main {
     color: var(--blue-color);
 }
 
+.three-month {
+    display: block;
+}
+
+.three-year {
+    display: none;
+}
+
 /* STEP 4 - FINISHING UP */
 
 .body-inner-cont-four {
     display: none;
+    margin-bottom: 0;
+}
+
+.four-body {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 8px;
+    font-size: 13px;
+    gap: 15px;
+    background-color: var(--white200-color);
+}
+
+.plan-pay-name{
+    margin-bottom: 6px;
+}
+
+.plan-pay-name, .plan-pay-amt {
+    color: var(--darkblue-color);
+    font-weight: 600;
+}
+
+.change-btn {
+    cursor: pointer;
+    /* margin-top: 20px; */
+    font-size: 13px;
+    /* padding-top: 10px; */
+    text-decoration: underline;
+    color: var(--ash-color);
+}
+
+.change-btn:hover {
+    color: var(--blue-color);
+}
+
+.four-line {
+    width: 100%;
+   outline: 1px solid hsl(240, 2%, 92%);
+}
+
+.plan-pay-selected {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.add-ons-selected {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.add-ons-selected div {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.addon-name, .final-total-text {
+    color: var(--ash-color);
+}
+
+.addon-amt {
+    color: var(--darkblue-color);
+    font-weight: 500;
+}
+
+.final-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding: 20px 20px 50px 20px;
+    /* padding-top: 20px; */
+}
+
+.total-amt {
+    color: var(--blue-color);
+    font-weight: 700;
 }
 
 /* THANK YOU STEP */

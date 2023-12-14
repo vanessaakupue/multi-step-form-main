@@ -86,7 +86,7 @@
               </div>
               <input type="text" name="email-one" id="email-one" placeholder="e.g. stephenking@lorem.com">
             </div>
-  
+
             <div action="./" class="step-one-inner | step-one-num" method="post">
               <div class="error-cont">
                 <label for="num-one">Phone Number</label><br>
@@ -105,7 +105,7 @@
           <h1 class="body-header-text">Select your plan</h1>
           <h6 class="body-second-text">You have the option of monthly or yearly billing.</h6>
           <div class="select-plan-pay">
-            <div class="arcade-cont | plan-pay " onclick="addPlan()">
+            <div class="arcade-cont | plan-pay " >
               <img src="/assets/images/icon-arcade.svg" class="arcade-img" alt="">
               <div class="arcade-text | text-pay">
                 <h6 class="name-two arcade-name">Arcade</h6>
@@ -153,7 +153,7 @@
             <div class="addon-one">
               <div class="addon-ist-cont">
                 <label class="container">
-                  <input type="checkbox" id="checkboxx" name="checkboxx">
+                  <input type="checkbox" class="checkboxx" name="checkboxx">
                   <span class="checkmark"></span>
                 </label>
                 <div class="addon-one-text">
@@ -170,7 +170,7 @@
             <div class="addon-one">
               <div class="addon-ist-cont">
                 <label class="container">
-                  <input type="checkbox" id="checkboxx" name="checkboxx">
+                  <input type="checkbox" class="checkboxx" name="checkboxx">
                   <span class="checkmark"></span>
                 </label>
                 <div class="addon-one-text">
@@ -187,7 +187,7 @@
             <div class="addon-one">
               <div class="addon-ist-cont">
                 <label class="container">
-                  <input type="checkbox" id="checkboxx" name="checkboxx">
+                  <input type="checkbox" class="checkboxx" name="checkboxx">
                   <span class="checkmark"></span>
                 </label>
                 <div class="addon-one-text">
@@ -220,19 +220,9 @@
             <div class="four-line"></div>
 
             <div class="add-ons-selected">
-              <div class="addon-sel | addon-sel-one">
-                <p class="addon-name | addon-name-one"></p>
-                <span class="addon-amt | addon-amt-one"></span>
-              </div>
-              <div class="addon-sel | addon-sel-two">
-                <p class="addon-name | addon-name-two"></p>
-                <span class="addon-amt | addon-amt-two"></span>
-              </div>
-              <div class="addon-sel | addon-sel-three">
-                <p class="addon-name | addon-name-three"></p>
-                <span class="addon-amt | addon-amt-three"></span>
-              </div>
+              <div class="addon-sel">
 
+              </div>
             </div>
 
           </div>
@@ -259,15 +249,15 @@
         <button class="prev-one">Go Back</button>
         <button type="submit" class="next-one">Next Step</button>
       </div>
-      
+
     </div>
 
-    
+
 
   </main>
-  
+
   <!-- <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
     Coded by <a href="#">Your Name Here</a>.
   </div> -->
 
@@ -275,4 +265,68 @@
 </body>
 </html>
 
+<!-- function updateTotal() {
+  let totalMonth = 0;
+  let totalYear = 0;
 
+  arrayPrice.forEach(item => {
+      totalMonth += parseFloat(item[1]);
+      totalYear += parseFloat(item[2]);
+  });
+
+  return {totalMonth, totalYear};
+}
+
+function displaySelectedItems() {
+  const addOnSelectedContainer = document.querySelector(".addon-sel");
+  const finalTotalContainer = document.querySelector(".final-total");
+  const finalTotalTextElement = finalTotalContainer.querySelector(".final-total-text");
+  const totalAmtElement = finalTotalContainer.querySelector(".total-amt");
+
+  const {totalMonth, totalYear} = updateTotal();
+
+  addOnSelectedContainer.innerHTML = "";
+
+  arrayPrice.forEach(function (item) {
+      // Create <p> for text
+      const createP = document.createElement('p');
+      createP.textContent = `${item[0]}`;
+      addOnSelectedContainer.appendChild(createP);
+
+      // Check the condition for month pricing using the 'month' variable
+      if (month.classList.contains('checkbox-active')) {
+          // Create <span> for month price
+          const createMn = document.createElement('span');
+          createMn.textContent = `${item[1]}`;
+          createP.appendChild(createMn);
+      } else {
+          // Create <span> for year price
+          const createYear = document.createElement('span');
+          createYear.textContent = `${item[2]}`;
+          createP.appendChild(createYear);
+      }
+  });
+
+  // Display total prices
+  const totalMonthElement = document.createElement('p');
+  totalMonthElement.textContent = `Total (per month)`;
+  const totalMonthAmt = document.createElement('span');
+  totalMonthAmt.textContent = `$${totalMonth}`;
+  finalTotalContainer.appendChild(totalMonthElement);
+  totalMonthElement.appendChild(totalMonthAmt);
+
+  const totalYearElement = document.createElement('p');
+  totalYearElement.textContent = `Total (per year)`;
+  const totalYearAmt = document.createElement('span');
+  totalYearAmt.textContent = `$${totalYear}`;
+  finalTotalContainer.appendChild(totalYearElement);
+  totalYearElement.appendChild(totalYearAmt);
+
+  // Determine when to display month or year
+  const displayText = month.classList.contains('checkbox-active') ? "Total (per month)" : "Total (per year)";
+  finalTotalTextElement.textContent = displayText;
+
+  const displayAmount = month.classList.contains('checkbox-active') ? `$${totalMonth.toFixed(2)} /mo` : `$${totalYear.toFixed(2)} /yr`;
+  totalAmtElement.textContent = displayAmount;
+
+}; -->

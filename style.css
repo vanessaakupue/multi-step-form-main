@@ -521,25 +521,23 @@ main {
 
 }
 
-.add-ons-selected {
+.addon-sel {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 16px;
 }
 
-.add-ons-selected div {
-    display: flex;
-    justify-content: space-between;
-
-}
-
-.addon-name, .final-total-text {
+.addon-sel p, .final-total p {
     color: var(--ash-color);
 }
 
-.addon-amt {
+.addon-sel span {
+    position: absolute;
+    right: 0;
     color: var(--darkblue-color);
     font-weight: 500;
+    /* padding-left: 100%; */
 }
 
 .final-total {
@@ -550,7 +548,7 @@ main {
     /* padding-top: 20px; */
 }
 
-.total-amt {
+.final-total span {
     color: var(--blue-color);
     font-weight: 700;
 }

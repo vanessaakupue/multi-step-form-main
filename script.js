@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // STEP 3
     const stepThreeMonth = document.querySelectorAll(".three-month");
     const stepThreeYear = document.querySelectorAll(".three-year");
-    const stepThreeCheckbox = document.querySelectorAll("#checkboxx");
+    const stepThreeCheckbox = document.querySelectorAll(".checkboxx");
 
     // STEP 4
 
@@ -80,11 +80,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 currentTab++;
                 showTab(currentTab);
                 updateActiveNumber();
-    
+
                 if (currentTab === totalTabs - 1) {
                     nextButton.textContent = "Confirm";
                 }
-    
+
                 if (currentTab > 0) {
                     prevButton.style.display = "block";
                 }
@@ -130,6 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
             stepThreeMonth.forEach(threeMonth => threeMonth.style.display = 'block');
             stepThreeYear.forEach(threeYear => threeYear.style.display = 'none');
         }
+
     }
 
     function handlePlanClick() {
@@ -146,130 +147,183 @@ document.addEventListener("DOMContentLoaded", function () {
     monthlyCheckbox.addEventListener('change', updateBillingCycle);
 
 
-    // STEP 3
-    stepThreeCheckbox.forEach(function(addOnChecked) {
-        addOnChecked.addEventListener("change", function(){
-            const addonOne = addOnChecked.closest(".addon-one");
 
-            if(addOnChecked.checked) {
-                addonOne.classList.add('addon-active');
-            } else {
-                addonOne.classList.remove('addon-active');
-            }
-        })
+      // STEP 4
+      let planPay = document.querySelectorAll(".plan-pay");
+      const arcadeName = document.querySelector(".arcade-name");
+      const advancedName = document.querySelector(".advanced-name");
+      const proName = document.querySelector(".pro-name");
+      const mArcade = document.querySelector(".m-arcade");
+      const mAdvanced = document.querySelector(".m-advanced");
+      const mPro = document.querySelector(".m-pro");
+      const yArcade = document.querySelector(".y-arcade");
+      const yAdvanced = document.querySelector(".y-advanced");
+      const yPro = document.querySelector(".y-pro");
+      let planpayName = document.querySelector(".plan-pay-name");
+      let planpayAmt = document.querySelector(".plan-pay-amt");
+  
+  
+      function addPlan() {
+          const getPlanInfo = (name, amount, timeUnit) => {
+              const planName = `${name.innerHTML} (${timeUnit.innerHTML})`;
+              const planAmt = amount.innerHTML;
+              localStorage.setItem("planSelected", planName);
+              localStorage.setItem("planAmt", planAmt);
+              showSelected();
+          };
+  
+          planPay.forEach(plan => {
+              plan.addEventListener('click', function() {
+                  if (month.classList.contains('checkbox-active')) {
+                      if (plan.classList.contains('arcade-cont')) {
+                          getPlanInfo(arcadeName, mArcade, month);
+                      } else if (plan.classList.contains('advanced-cont')) {
+                          getPlanInfo(advancedName, mAdvanced, month);
+                      } else {
+                          getPlanInfo(proName, mPro, month);
+                      }
+                  } else {
+                      if (plan.classList.contains('arcade-cont')) {
+                          getPlanInfo(arcadeName, yArcade, year);
+                      } else if (plan.classList.contains('advanced-cont')) {
+                          getPlanInfo(advancedName, yAdvanced, year);
+                      } else {
+                          getPlanInfo(proName, yPro, year);
+                      }
+                  }
+              });
+          });
+      }
+
+      function showSelected() {
+          planpayName.innerHTML = localStorage.getItem("planSelected");
+          planpayAmt.innerHTML = localStorage.getItem("planAmt");
+      }
+
+      addPlan();
+
+
+
+    function calculateTotal() {
+        // Get selected plan details
+        const selectedPlanName = localStorage.getItem("planSelected");
+        const selectedPlanAmt = parseFloat(localStorage.getItem("planAmt"));
+
+        // Get billing cycle (monthly or yearly)
+        const isMonthly = document.querySelector('.monthly').classList.contains('checkbox-active');
+
+        // Calculate total based on selected plan and billing cycle
+        let total = isMonthly ? selectedPlanAmt : selectedPlanAmt * 12;
+
+        // Get selected add-ons
+        const addOnSelectedContainer = document.querySelector(".addon-sel");
+        const selectedAddons = addOnSelectedContainer.querySelectorAll("p");
+
+        // Calculate total for selected add-ons
+        selectedAddons.forEach((addon) => {
+            const addonText = addon.textContent;
+            const addonPrice = parseFloat(isMonthly ? addon.querySelector(".three-month") : addon.querySelector(".three-year"));
+
+            // Add addon price to total
+            total += addonPrice;
+        });
+
+        // Display the total amount
+        const finalTotalText = document.querySelector(".final-total-text");
+        const totalAmtElement = document.querySelector(".total-amt");
+
+        // Update the text based on billing cycle
+        finalTotalText.textContent = `Total (Per ${isMonthly ? 'Month' : 'Year'})`;
+
+        const numericTotal = total.toFixed(2).replace(/[^\d.]/g, '');
+
+        totalAmtElement.textContent = `$${numericTotal} ${isMonthly ? '/mo' : '/yr'}`;
+
+        console.log(numericTotal);
+    }
+
+    // Call the calculateTotal function whenever user makes a selection or changes a value
+    document.querySelectorAll('input[type="checkbox"]').forEach(function (checkbox) {
+        checkbox.addEventListener("change", calculateTotal);
     });
 
+    document.querySelectorAll('.plan-pay').forEach(function (plan) {
+        plan.addEventListener("click", calculateTotal);
+    });
 
-    // STEP 4
-    let planPay = document.querySelectorAll(".plan-pay");
-    const arcadeName = document.querySelector(".arcade-name");
-    const advancedName = document.querySelector(".advanced-name");
-    const proName = document.querySelector(".pro-name");
-    const mArcade = document.querySelector(".m-arcade");
-    const mAdvanced = document.querySelector(".m-advanced");
-    const mPro = document.querySelector(".m-pro");
-    const yArcade = document.querySelector(".y-arcade");
-    const yAdvanced = document.querySelector(".y-advanced");
-    const yPro = document.querySelector(".y-pro");
-    let planpayName = document.querySelector(".plan-pay-name");
-    let planpayAmt = document.querySelector(".plan-pay-amt");
+    calculateTotal();
+    showSelected();
+
+    let arrayPrice = [];
 
 
-    function addPlan() {
-        const getPlanInfo = (name, amount, timeUnit) => {
-            const planName = `${name.innerHTML} (${timeUnit.innerHTML})`;
-            const planAmt = amount.innerHTML;
-            localStorage.setItem("planSelected", planName);
-            localStorage.setItem("planAmt", planAmt);
-            showSelected();
-        };
-    
-        planPay.forEach(plan => {
-            plan.addEventListener('click', function() {
-                if (month.classList.contains('checkbox-active')) {
-                    if (plan.classList.contains('arcade-cont')) {
-                        getPlanInfo(arcadeName, mArcade, month);
-                    } else if (plan.classList.contains('advanced-cont')) {
-                        getPlanInfo(advancedName, mAdvanced, month);
+    stepThreeCheckbox.forEach(function (addOnChecked) {
+        addOnChecked.addEventListener("change", function () {
+            const addonOne = addOnChecked.closest(".addon-one");
+            const addOnSelectedContainer = document.querySelector(".addon-sel");
+            if (addOnChecked.checked) {
+                addonOne.classList.add('addon-active');
+
+                const showText = addonOne.querySelector(".add-text").innerHTML;
+                const showMn = addonOne.querySelector(".three-month").innerHTML;
+                const show = addonOne.querySelector(".three-year").innerHTML;
+
+                arrayPrice.push([showText, showMn, show]);
+
+                addOnSelectedContainer.innerHTML = "";
+
+                arrayPrice.forEach(function (item) {
+                    const createP = document.createElement('p');
+                    createP.textContent = `${item[0]}`;
+                    addOnSelectedContainer.appendChild(createP);
+
+                    if (month.classList.contains('checkbox-active')) {
+                        const createMn = document.createElement('span');
+                        createMn.textContent = `${item[1]}`;
+                        createP.appendChild(createMn);
                     } else {
-                        getPlanInfo(proName, mPro, month);
+                        const createYear = document.createElement('span');
+                        createYear.textContent = `${item[2]}`;
+                        createP.appendChild(createYear);
                     }
-                } else {
-                    if (plan.classList.contains('arcade-cont')) {
-                        getPlanInfo(arcadeName, yArcade, year);
-                    } else if (plan.classList.contains('advanced-cont')) {
-                        getPlanInfo(advancedName, yAdvanced, year);
-                    } else {
-                        getPlanInfo(proName, yPro, year);
-                    }
+                });
+
+            } else {
+                addonOne.classList.remove('addon-active');
+
+                const indexToRemove = arrayPrice.findIndex(item =>
+                    item[0] === addonOne.querySelector(".add-text").innerHTML &&
+                    item[1] === addonOne.querySelector(".three-month").innerHTML &&
+                    item[2] === addonOne.querySelector(".three-year").innerHTML
+                );
+
+                if (indexToRemove !== -1) {
+                    arrayPrice.splice(indexToRemove, 1);
                 }
-            });
+
+                addOnSelectedContainer.innerHTML = "";
+
+                arrayPrice.forEach(function (item) {
+                    const createP = document.createElement('p');
+                    createP.textContent = `${item[0]}`;
+                    addOnSelectedContainer.appendChild(createP);
+
+                    if (month.classList.contains('checkbox-active')) {
+                        const createMn = document.createElement('span');
+                        createMn.textContent = `${item[1]}`;
+                        createP.appendChild(createMn);
+                    } else {
+                        const createYear = document.createElement('span');
+                        createYear.textContent = `${item[2]}`;
+                        createP.appendChild(createYear);
+                    }
+                });
+
+            }
+
         });
-    }
-    
-    function showSelected() {
-        planpayName.innerHTML = localStorage.getItem("planSelected");
-        planpayAmt.innerHTML = localStorage.getItem("planAmt");
-    }
-    
-    addPlan();
+    });
 
-
-    
-
-
-
-    // function addPlan(){
-    //     planPay.forEach(plan => {
-    //         plan.addEventListener('click', function() {
-    //             if(month.classList.contains('checkbox-active')){
-    //                 if(plan.classList.contains('arcade-cont')){
-    //                     localStorage.setItem("planSelected", arcadeName.innerHTML + " " + "(" + month.innerHTML + ")");
-    //                     localStorage.setItem("planAmt", mArcade.innerHTML);
-    //                     showSelected();
-    //                    } else if (plan.classList.contains('advanced-cont')){
-    //                     localStorage.setItem("planSelected", advancedName.innerHTML + " "  + "(" + month.innerHTML + ")");
-    //                     localStorage.setItem("planAmt", mAdvanced.innerHTML);
-    //                     showSelected();
-    //                    } else {
-    //                     localStorage.setItem("planSelected", proName.innerHTML + " "  + "(" + month.innerHTML + ")");
-    //                     localStorage.setItem("planAmt", mPro.innerHTML);
-    //                     showSelected();
-    //                 }
-
-    //             } else {
-    //                 if(plan.classList.contains('arcade-cont')){
-    //                     localStorage.setItem("planSelected", arcadeName.innerHTML + " " + "(" + year.innerHTML + ")");
-    //                     localStorage.setItem("planAmt", yArcade.innerHTML);
-    //                     showSelected();
-    //                    } else if (plan.classList.contains('advanced-cont')){
-    //                     localStorage.setItem("planSelected", advancedName.innerHTML + " "  + "(" + year.innerHTML + ")");
-    //                     localStorage.setItem("planAmt", yAdvanced.innerHTML);
-    //                     showSelected();
-    //                    } else {
-    //                     localStorage.setItem("planSelected", proName.innerHTML + " "  + "(" + year.innerHTML + ")");
-    //                     localStorage.setItem("planAmt", yPro.innerHTML);
-    //                     showSelected();
-    //                 }
-    //             }
-
-    //         //    showSelected();
-    //         })
-    //     })
-    // };
-
-
-
-
-
-    // function showSelected() {
-    //     planpayName.innerHTML = localStorage.getItem("planSelected");
-    //     planpayAmt.innerHTML = localStorage.getItem("planAmt");
-    // };
-
-    // addPlan();
-
-    // showSelected();
 
 
 
